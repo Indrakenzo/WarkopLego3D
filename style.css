@@ -76,3 +76,54 @@ canvas {
         font-size: 1rem;
     }
 }
+
+/* --- KONTROL VIRTUAL MOBILE --- */
+#mobile-controls {
+    position: absolute;
+    bottom: 30px;
+    left: 20px;
+    z-index: 5;
+    display: none; /* Disembunyikan saat di Laptop */
+    text-align: center;
+}
+
+.horizontal-btns {
+    display: flex;
+    justify-content: center;
+    gap: 5px;
+}
+
+.ctrl-btn {
+    width: 55px;
+    height: 55px;
+    margin: 3px;
+    border-radius: 12px;
+    background: rgba(0, 0, 0, 0.4);
+    border: 2px solid #00ff41;
+    color: #00ff41;
+    font-size: 1.2rem;
+    font-weight: bold;
+    backdrop-filter: blur(4px);
+    /* Mencegah teks terblokir saat disentuh lama */
+    user-select: none; 
+    -webkit-user-select: none; 
+    touch-action: none; 
+}
+
+.ctrl-btn:active {
+    background: rgba(0, 255, 65, 0.4);
+    transform: scale(0.95);
+}
+
+/* --- RESPONSIVE MOBILE --- */
+@media (max-width: 768px) {
+    #overlay h1 {
+        font-size: 2rem;
+    }
+    #overlay p {
+        font-size: 1rem;
+    }
+    #mobile-controls {
+        display: block; /* Tampilkan tombol hanya di layar HP */
+    }
+}
