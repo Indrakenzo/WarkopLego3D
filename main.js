@@ -51,10 +51,38 @@ scene.add(npcDuo);
 const light = new THREE.AmbientLight(0xffffff, 1.5);
 scene.add(light);
 
+// ... (Kode Scene, Kamera, Renderer, Floor, Barista, NPC tetap sama seperti milikmu) ...
+
 // 8. LOGIKA GERAK (WASD)
 const keys = {};
+
+// Kontrol Laptop (Keyboard)
 window.addEventListener('keydown', (e) => keys[e.code] = true);
 window.addEventListener('keyup', (e) => keys[e.code] = false);
+
+// Kontrol HP (Layar Sentuh)
+function setupTouchButton(id, keyCode) {
+    const btn = document.getElementById(id);
+    if (!btn) return;
+    
+    // Saat tombol layar disentuh
+    btn.addEventListener('touchstart', (e) => { 
+        e.preventDefault(); 
+        keys[keyCode] = true; 
+    }, { passive: false });
+    
+    // Saat sentuhan dilepas
+    btn.addEventListener('touchend', (e) => { 
+        e.preventDefault(); 
+        keys[keyCode] = false; 
+    });
+}
+
+// Hubungkan tombol layar dengan kode WASD
+setupTouchButton('btn-w', 'KeyW');
+setupTouchButton('btn-a', 'KeyA');
+setupTouchButton('btn-s', 'KeyS');
+setupTouchButton('btn-d', 'KeyD');
 
 function movePlayer() {
     const speed = 0.15; // Gue cepetin dikit jalannya
